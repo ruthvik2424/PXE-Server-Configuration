@@ -10,6 +10,7 @@
 ## Before you start, ensure you have the following:
 * **A Linux server (e.g., Ubuntu) to act as the PXE server.**
 * **Clone the Repository because it contain Important Configuration Files for Reference.**
+* **Do Not Directly Use The Files Provided In Repository as They Are Plain TXT Files**
 
 ## Step-by-Step Configuration
 ## Step 1: Firewall Setup
