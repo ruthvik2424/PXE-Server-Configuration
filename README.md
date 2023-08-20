@@ -8,71 +8,90 @@
 
 ## Prerequisites
 ## Before you start, ensure you have the following:
-* A Linux server (e.g., Ubuntu) to act as the PXE server.
-* Clone the Repository because it contain Important Configuration Files for Reference.
+* **A Linux server (e.g., Ubuntu) to act as the PXE server.**
+* **Clone the Repository because it contain Important Configuration Files for Reference.**
 
 ## Step-by-Step Configuration
-Step 1: Firewall Setup
-Disable and stop the firewall to ensure it doesn't interfere with network booting.
+## Step 1: Firewall Setup
+**Disable and stop the firewall to ensure it doesn't interfere with network booting.**
 ```bash
 sudo systemctl stop ufw
 sudo systemctl disable ufw
 ```
-Step 2: Install Required Software
-Install the necessary software packages (dnsmasq, vsftpd, httpd, syslinux).
+## Step 2: Install Required Software
+**Install the necessary software packages (dnsmasq, vsftpd, httpd, syslinux).**
 ```bash
 sudo apt install -y dnsmasq vsftpd apache2 syslinux
 ```
-Step 3: Backup dnsmasq Configuration
-Create a backup of the dnsmasq configuration file.
+## Information And Use OF Packages In PXE-Booting
+## dnsmasq:
+   - Description: A lightweight DNS and DHCP server.
+   - Use in PXE Server: Provides DHCP services for IP assignment and DNS resolution, essential for network booting.
+  
+## vsftpd:
+   - Description: Very Secure FTP (File Transfer Protocol) daemon.
+   - Use in PXE Server: Used for transferring files between the PXE server and client machines, especially for boot images and OS installations.
+
+## apache2:
+   - Description: The Apache HTTP Server, a widely used web server.
+   - Use in PXE Server: Serves files over HTTP to PXE clients, such as boot files and OS installation images.
+
+## syslinux:
+   - Description: A lightweight bootloader for the Linux operating system.
+   - Use in PXE Server: Provides the bootloader components necessary for network booting and initiating the PXE boot process on client machines.
+
+## These packages are integral to the functionality of a PXE server, collectively enabling network booting, file transfer, and OS installation on client machines.
+
+## Step 3: Backup dnsmasq Configuration
+**Create a backup of the dnsmasq configuration file.**
 ```bash
 sudo mv /etc/dnsmasq.conf /etc/dnsmasq.conf.bck
 ```
 
-Step 4: Check The Interface and the IP Address and Edit dnsmasq Configuration
+## Step 4: Check The Interface and the IP Address and Edit dnsmasq Configuration
+**Open the dnsmasq configuration file for editing. Customize it to your network settings.**
 ```bash
-# Open the dnsmasq configuration file for editing. Customize it to your network settings.
 ip a
 sudo nano /etc/dnsmasq.conf
 # Sample file is provided in the repository
 # Edit the variable According to Your Network Configuration  
 ```
-Step 5: Create Folders
-Create essential directories for the PXE server.
+## Step 5: Create Folders
+**Create essential directories for the PXE server.**
 ```bash
 sudo mkdir -p /netboot/tftp/pxelinux.cfg
 sudo mkdir /netboot/www
 ```
-Step 6: Copy Syslinux Files
-Copy Syslinux bootloader files to the tftp directory.
+## Step 6: Copy Syslinux Files
+**Copy Syslinux bootloader files to the tftp directory.**
 ```bash
 sudo cp /usr/share/syslinux/{menu.c32,ldlinux.c32,libutil.c32} /netboot/tftp
 # pxelinux.cfg  file is provided in Repository Copy that file also. 
 ```
-Step 7: Configure Apache Web Server
-Create a symbolic link to your Apache web server's document root.
+## Step 7: Configure Apache Web Server
+**Create a symbolic link to your Apache web server's document root.**
 ```bash
 sudo ln -s  /netboot/www /var/www/html/
 ```
-Step 8: Start and Enable Apache2
-Start and enable the Apache2 web server.
+## Step 8: Start and Enable Apache2
+**Start and enable the Apache2 web server.**
 ```bash
 sudo systemctl start apache2
 sudo systemctl enable apache2
 ```
-Step 9: Create OS Directory
-Create directories for the OS you want to install (e.g., CentOS 8).
+## Step 9: Create OS Directory
+**Create directories for the OS you want to install (e.g., CentOS 8).**
 ```bash
 sudo mkdir /netboot/{tftp,www}/centos8
 ```
-Step 10: Install rsync
-If not already installed, install rsync.
+## Step 10: Install rsync
+**If not already installed, install rsync.**
 ```bash
 sudo apt install -y rsync
 ```
-Step 11: Copy OS Files
-Use rsync to copy the OS iso files to the web server directory.
-If you download the iso on your main OS (Windows) you can copy the content by using the SCP.   
+## Step 11: Copy OS Files
+**Use rsync to copy the OS iso files to the web server directory.**
+**If you download the iso on your main OS (Windows) you can copy the content by using the SCP.**   
 ```bash
 # first mount the iso and then copy its content to another folder eg:(Centos8)
 # then running the command to copy it inside your pxe-server ubuntu vm
@@ -80,27 +99,27 @@ If you download the iso on your main OS (Windows) you can copy the content by us
 # ones you got the location of the files you can modify the command accordingly
 sudo rsync -avz /home/user/centos8 /netboot/www/centos8
 ```
-Step 12: Copy Kernel and Initrd Files
-Copy the kernel and initrd files to the tftp directory.
+## Step 12: Copy Kernel and Initrd Files
+**Copy the kernel and initrd files to the tftp directory.**
 ```bash
 sudo cp /netboot/www/centos8/images/pxeboot/{initrd.img,vmlinuz} /netboot/tftp/centos8/
 ```
-Step 13: Edit PXE Configuration (pxelinux.cfg/default)
-Customize the PXE boot menu configuration for your OS.
+## Step 13: Edit PXE Configuration (pxelinux.cfg/default)
+**Customize the PXE boot menu configuration for your OS.**
 ```bash
 # This sample file is also provided in the repository
 sudo nano /netboot/tftp/pxelinux.cfg/default
 ```
-Step 14: Restart Services
-Restart the HTTP and dnsmasq services to apply changes.
+## Step 14: Restart Services
+**Restart the apache2 and dnsmasq services to apply changes.**
 ```bash
 sudo systemctl restart apache2
 sudo systemctl restart dnsmasq
 ```
-Step 15: Test The Configuration 
-Create Another Vm Without Providing any ISO File
-
-
+## Step 15: Test The Configuration 
+**Create Another Vm Without Providing any ISO File**
+```bash
+```
 
 
 **Congratulations! You've successfully configured a PXE server for network booting and OS installations. This setup is not only a valuable tool for IT professionals but also a fundamental concept to understand in the world of network-based system provisioning.**
