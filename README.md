@@ -66,7 +66,7 @@ sudo mkdir /netboot/www
 **Copy Syslinux bootloader files to the tftp directory.**
 ```bash
 sudo cp /usr/share/syslinux/{menu.c32,ldlinux.c32,libutil.c32} /netboot/tftp
-# pxelinux.cfg  file is provided in Repository Copy that file also. 
+# pxelinux.0  file is provided in Repository Copy that file also. 
 ```
 ## Step 7: Configure Apache Web Server
 **Create a symbolic link to your Apache web server's document root.**
