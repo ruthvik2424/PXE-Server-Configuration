@@ -1,0 +1,6 @@
+default menu.c32
+label install_centos8.3
+menu label ^Install CentOS 8.3
+menu default
+kernel centos8/vmlinuz
+append initrd=centos8/initrd.img ip=dhcp inst.repo=http://YOUR_MACHINE_IP/centos8

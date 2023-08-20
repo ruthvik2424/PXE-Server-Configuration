@@ -1,0 +1,29 @@
+# SAMPLE FILE 
+interface=ens33
+bind-interfaces
+domain=exe.com
+dhcp-range=ens33,192.168.21.170,192.168.21.240,255.255.255.0,12h
+dhcp-option=option:router,192.168.21.139
+dhcp-option=option:dns-server,192.168.21.139
+dhcp-option=option:dns-server,8.8.8.8
+enable-tftp
+tftp-root=/netboot/tftp
+dhcp-boot=pxelinux.0,linuxhint-s80,192.168.21.139
+pxe-prompt="Press F8 for PXE Network boot.",10
+pxe-service=x86PC,"Install OS via PXE",pxelinux
+
+
+
+
+interface=ens33 -> # Interface through which your machine is connected to Internet
+bind-interfaces
+domain=exe.com
+dhcp-range=ens33,IP_RANGE_START,IP_RANGE_END,NETMASK,LEASE_TIME
+dhcp-option=option:router,YOUR MACHINE'S IP
+dhcp-option=option:dns-server,YOUR MACHINE'S IP
+dhcp-option=option:dns-server,8.8.8.8
+enable-tftp # Enabling the Trivial File Tranfer Protocol Service For Securly Tranfer Initial Boot Files
+tftp-root=/netboot/tftp  TFTP ROOT DIRECTORY
+dhcp-boot=pxelinux.0,linuxhint-s80,YOUR MACHINE'S IP
+pxe-prompt="Press F8 for PXE Network boot.",10
+pxe-service=x86PC,"Install OS via PXE",pxelinux
