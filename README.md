@@ -5,8 +5,11 @@
 
 **By the end of this project, you'll have a fully functional PXE server ready to deploy CentOS 8 across vm network. You can Try to Deploy other OS Using this Setup. This setup can serve as a foundation for various IT tasks, including system maintenance, software distribution, and automated provisioning of new systems. One's Successful you can try it on actual server in real world environments**
 
-Clone the Repository First 
 
+## Prerequisites
+## Before you start, ensure you have the following:
+* A Linux server (e.g., Ubuntu) to act as the PXE server.
+* Clone the Repository because it contain Important Configuration Files for Reference.
 
 ## Step-by-Step Configuration
 Step 1: Firewall Setup
@@ -100,7 +103,7 @@ Create Another Vm Without Providing any ISO File
 
 
 
-Congratulations! You've successfully configured a PXE server for network booting and OS installations. This setup is not only a valuable tool for IT professionals but also a fundamental concept to understand in the world of network-based system provisioning.
+**Congratulations! You've successfully configured a PXE server for network booting and OS installations. This setup is not only a valuable tool for IT professionals but also a fundamental concept to understand in the world of network-based system provisioning.**
 
 By mastering the PXE server configuration, you've opened the door to a wide range of possibilities, including:
 
@@ -111,4 +114,4 @@ By mastering the PXE server configuration, you've opened the door to a wide rang
 
 The knowledge gained from this project serves as a strong foundation for various IT tasks, making it an essential skill in today's dynamic technology landscape. As you continue to explore and experiment with PXE, you'll unlock even more capabilities for network-based system administration.
 
-Feel free to explore further, customize your PXE server setup to suit specific needs, and continue to expand your knowledge in this fascinating field.
+**Feel free to explore further, customize your PXE server setup to suit specific needs, and continue to expand your knowledge in this fascinating field.**
