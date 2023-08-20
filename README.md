@@ -40,7 +40,7 @@ sudo apt install -y dnsmasq vsftpd apache2 syslinux
    - Description: A lightweight bootloader for the Linux operating system.
    - Use in PXE Server: Provides the bootloader components necessary for network booting and initiating the PXE boot process on client machines.
 
-## These packages are integral to the functionality of a PXE server, collectively enabling network booting, file transfer, and OS installation on client machines.
+ **These packages are integral to the functionality of a PXE server, collectively enabling network booting, file transfer, and OS installation on client machines.**
 
 ## Step 3: Backup dnsmasq Configuration
 **Create a backup of the dnsmasq configuration file.**
