@@ -3,7 +3,7 @@
 ## Overview
 **This project guides you through the process of setting up a PXE (Preboot Execution Environment) server within an Ubuntu virtual machine hosted on VMware. A PXE server is a powerful tool that simplifies the deployment and installation of operating systems across a network. With this setup, you can perform network-based OS installations on multiple virtual machines within your VMware environment, eliminating the need for physical installation media such as DVDs or USB drives. This project specifically focuses on configuring a PXE server for booting and installing CentOS 8, a popular Linux distribution, on your VMware-based virtual machines.**
 
-**By the end of this project, you'll have a fully functional PXE server ready to deploy CentOS 8 across vm network. You can Try to Deploy other OS Using this Setup. This setup can serve as a foundation for various IT tasks, including system maintenance, software distribution, and automated provisioning of new systems. One's Successful you can try it on actual server in real world environments**
+**By the end of this project, you'll have a fully functional PXE server ready to deploy CentOS 8 across vm network. You can Try to Deploy other OS Using this Setup. This setup can serve as a foundation for various IT tasks, including system maintenance, software distribution, and automated provisioning of new systems. One's Successful you can try it on actual server in real world environments.**
 
 
 ## Prerequisites
